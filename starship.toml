@@ -10,9 +10,7 @@ $directory\
 $git_branch\
 $git_status\
 [](fg:color_aqua)\
-$line_break$character"""
-
-right_format = """
+$fill\
 ([](fg:color_blue)\
 $c\
 $rust\
@@ -38,7 +36,7 @@ $jobs\
 $cmd_duration\
 $time\
 [](fg:color_bg1)\
-"""
+$line_break$character"""
 
 palette = 'gruvbox_dark'
 
@@ -120,6 +118,9 @@ modified = "!${count} "
 staged = "+${count} "
 renamed = "»${count} "
 deleted = "✘${count} "
+
+[fill]
+symbol = " "
 
 [nodejs]
 symbol = ""
