@@ -9,6 +9,7 @@ $hostname\
 $directory\
 [](fg:color_yellow bg:color_aqua)\
 $git_branch\
+$git_state\
 $git_status\
 $git_commit\
 [](fg:color_aqua)\
@@ -136,6 +137,17 @@ truncation_symbol = "…/"
 symbol = ""
 style = "bg:color_aqua"
 format = '[[ $symbol $branch( -> $remote_branch) ](fg:color_fg0 bg:color_aqua)]($style)'
+
+[git_state]
+style = "bg:color_aqua"
+rebase = "󰢟 Rebasing"
+merge = " Merging"
+revert = "󰌥 Reverting"
+cherry_pick = " Cherry-Picking"
+bisect = "󰢟 Bisecting"
+am = "󰶌 Applying-Mailbox"
+am_or_rebase = "󰶌 Mailbox/󰢟 Rebasing"
+format = '[[ $state( $progress_current/$progress_total) ](bold fg:color_fg0 bg:color_aqua)]($style)'
 
 [git_status]
 style = "bg:color_aqua"
