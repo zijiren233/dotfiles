@@ -89,6 +89,9 @@ local noice_plugins = {
 		"MunifTanjim/nui.nvim",
 		"rcarriga/nvim-notify",
 	},
+	config = function()
+		require("config.noice")
+	end,
 }
 
 local fugitive_plugins = {
@@ -145,37 +148,6 @@ local markdown_plugins = {
 	ft = { "markdown" },
 }
 
-local leap_plugins = {
-	"ggandor/leap.nvim",
-	config = function()
-		require("leap").create_default_mappings()
-	end,
-}
-
-local surround_plugins = {
-	"kylechui/nvim-surround",
-	version = "*",
-    event = "VeryLazy",
-    config = function()
-        require("nvim-surround").setup({
-            -- To solve the conflicts with leap.nvim
-            -- See: https://github.com/ggandor/leap.nvim/discussions/59
-            keymaps = {
-                insert = "<C-g>z",
-                insert_line = "gC-ggZ",
-                normal = "gz",
-                normal_cur = "gZ",
-                normal_line = "gzgz",
-                normal_cur_line = "gZgZ",
-                visual = "gz",
-                visual_line = "gZ",
-                delete = "gzd",
-                change = "gzc",
-            },
-        })
-    end,
-}
-
 local telescope_plugins = {
 	"nvim-telescope/telescope.nvim",
 	branch = "0.1.x",
@@ -187,6 +159,23 @@ local telescope_plugins = {
 
 local faster_plugins = {
 	"pteroctopus/faster.nvim",
+}
+
+local colorizer_plugins = {
+	"NvChad/nvim-colorizer.lua",
+	opts = {
+		user_default_options = {
+			names = false,
+		},
+	},
+}
+
+local which_key_plugins = {
+	"folke/which-key.nvim",
+	event = 'VimEnter',
+	config = function()
+		require("config.which-key")
+	end,
 }
 
 require("lazy").setup({
@@ -209,8 +198,8 @@ require("lazy").setup({
 	indent_blankline_plugins,
 	lualine_plugins,
 	markdown_plugins,
-	leap_plugins,
-	surround_plugins,
 	telescope_plugins,
 	faster_plugins,
+	colorizer_plugins,
+	which_key_plugins,
 })
