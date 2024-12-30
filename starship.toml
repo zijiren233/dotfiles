@@ -9,6 +9,7 @@ $directory\
 [](fg:color_yellow bg:color_aqua)\
 $git_branch\
 $git_status\
+$git_commit\
 [](fg:color_aqua)\
 $fill\
 ([](fg:color_blue)\
@@ -103,21 +104,28 @@ truncation_symbol = "…/"
 [git_branch]
 symbol = ""
 style = "bg:color_aqua"
-format = '[[ $symbol $branch ](fg:color_fg0 bg:color_aqua)]($style)'
+format = '[[ $symbol $branch( -> $remote_branch) ](fg:color_fg0 bg:color_aqua)]($style)'
 
 [git_status]
 style = "bg:color_aqua"
 format = '[[($all_status$ahead_behind)](fg:color_fg0 bg:color_aqua)]($style)'
 conflicted = "=${count} "
 ahead = "⇡${count} "
-behind = "⇣${count} "
 diverged = "⇕⇡${ahead_count}⇣${behind_count} "
+behind = "⇣${count} "
 untracked = "?${count} "
 stashed = "$${count} "
 modified = "!${count} "
 staged = "+${count} "
 renamed = "»${count} "
 deleted = "✘${count} "
+
+[git_commit]
+tag_disabled = false
+tag_symbol = " "
+style = "bg:color_aqua"
+format = '[[$symbol$tag](fg:color_fg0 bg:color_aqua)]($style)'
+only_detached = false
 
 [fill]
 symbol = " "
