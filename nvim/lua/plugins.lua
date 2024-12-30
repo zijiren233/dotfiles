@@ -17,6 +17,22 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+local sleuth_plugins = {
+	"tpope/vim-sleuth",
+}
+
+local dressing_plugins = {
+	"stevearc/dressing.nvim",
+	event = 'VeryLazy',
+	opts = {},
+}
+
+local todo_comments_plugins = {
+	"folke/todo-comments.nvim",
+	dependencies = { 'nvim-lua/plenary.nvim' },
+	opts = { signs = false },
+}
+
 local mason_plugins = {
 	"williamboman/mason.nvim",
 }
@@ -174,6 +190,9 @@ local faster_plugins = {
 }
 
 require("lazy").setup({
+	sleuth_plugins,
+	dressing_plugins,
+	todo_comments_plugins,
     mason_plugins,
     mason_lspconfig_plugins,
     lspconfig_plugins,
