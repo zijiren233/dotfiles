@@ -27,6 +27,7 @@ $dart\
 $cmake\
 $docker_context\
 $conda\
+$package\
 [](fg:color_blue))\
 ([](fg:color_bg3)\
 $localip\
@@ -60,27 +61,49 @@ disabled = false
 style = "bg:color_orange fg:color_fg0"
 
 [os.symbols]
+Alpaquita = ""
+AlmaLinux = ""
 Windows = "󰍲"
-Ubuntu = "󰕈"
+Ubuntu = ""
 SUSE = ""
-Raspbian = "󰐿"
+Raspbian = ""
 Mint = "󰣭"
 Macos = "󰀵"
 Manjaro = ""
-Linux = "󰌽"
+Linux = ""
 Gentoo = "󰣨"
 Fedora = "󰣛"
 Alpine = ""
 Amazon = ""
 Android = ""
 Arch = "󰣇"
-Artix = "󰣇"
+Artix = ""
 EndeavourOS = ""
 CentOS = ""
 Debian = "󰣚"
 Redhat = "󱄛"
 RedHatEnterprise = "󱄛"
 Pop = ""
+DragonFly = ""
+Emscripten = ""
+FreeBSD = ""
+Garuda = "󰛓"
+HardenedBSD = "󰞌"
+Illumos = "󰈸"
+Kali = ""
+Mabox = ""
+Mariner = ""
+MidnightBSD = ""
+NetBSD = ""
+NixOS = ""
+OpenBSD = "󰈺"
+openSUSE = ""
+OracleLinux = "󰌷"
+RockyLinux = ""
+Redox = "󰀘"
+Solus = "󰠳"
+Unknown = ""
+Void = ""
 
 [username]
 show_always = true
@@ -97,7 +120,7 @@ format = '[$ssh_symbol $hostname ]($style)'
 [directory]
 style = "fg:color_fg0 bg:color_yellow"
 read_only = ""
-format = "[ $path( $read_only) ]($style)"
+format = "[  $path( $read_only) ]($style)"
 truncation_length = 3
 truncation_symbol = "…/"
 
@@ -138,8 +161,79 @@ only_detached = false
 [fill]
 symbol = " "
 
+[aws]
+symbol = ""
+
+[gcloud]
+symbol = "🇬️"
+
+[buf]
+symbol = ""
+
+[crystal]
+symbol = ""
+
+[elixir]
+symbol = ""
+
+[elm]
+symbol = ""
+
+[fennel]
+symbol = ""
+
+[guix_shell]
+symbol = ""
+
+[haxe]
+symbol = ""
+
+[julia]
+symbol = ""
+
+[lua]
+symbol = ""
+
+[meson]
+symbol = "󰔷"
+
+[nim]
+symbol = "󰆥"
+
+[nix_shell]
+symbol = ""
+
+[ocaml]
+symbol = ""
+
+[package]
+symbol = "󰏗"
+style = "bg:color_blue"
+format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
+
+[perl]
+symbol = ""
+
+[rlang]
+symbol = "󰟔"
+
+[ruby]
+symbol = ""
+
+[scala]
+symbol = ""
+
+[swift]
+symbol = ""
+
+[zig]
+symbol = ""
+
+[gradle]
+symbol = ""
+
 [nodejs]
-symbol = ""
+symbol = ""
 style = "bg:color_blue"
 format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
 
@@ -154,7 +248,7 @@ style = "bg:color_blue"
 format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
 
 [golang]
-symbol = ""
+symbol = ""
 style = "bg:color_blue"
 format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
 
@@ -200,6 +294,7 @@ format = '[[ $symbol( $context) ](fg:#83a598 bg:color_blue)]($style)'
 
 [conda]
 style = "bg:color_blue"
+symbol = ""
 format = '[[ $symbol( $environment) ](fg:#83a598 bg:color_blue)]($style)'
 
 [memory_usage]
