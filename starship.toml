@@ -16,6 +16,7 @@ $git_commit\
 $fill\
 ([](fg:color_blue)\
 $c\
+$cpp\
 $rust\
 $golang\
 $nodejs\
@@ -251,6 +252,12 @@ format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
 
 [c]
 symbol = ""
+style = "bg:color_blue"
+format = '[[ $symbol( $name)( $version) ](fg:color_fg0 bg:color_blue)]($style)'
+
+[cpp]
+disabled = false
+symbol = ""
 style = "bg:color_blue"
 format = '[[ $symbol( $name)( $version) ](fg:color_fg0 bg:color_blue)]($style)'
 

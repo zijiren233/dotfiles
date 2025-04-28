@@ -123,7 +123,8 @@ local nvim_treesitter_plugins = {
 
 local rainbow_delimiters_plugins = {
 	"HiPhish/rainbow-delimiters.nvim",
-    dependencies = { "nvim-treesitter/nvim-treesitter" },
+	submodules = false,
+	main = "rainbow-delimiters.setup",
 }
 
 local indent_blankline_plugins = {
