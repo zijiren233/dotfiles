@@ -49,11 +49,11 @@ palette = 'gruvbox_dark'
 
 [palettes.gruvbox_dark]
 color_fg0 = '#1f2933'
-color_bg1 = '#d6d0c4'
-color_bg2 = '#beb5a5'
-color_bg3 = '#a39a89'
-color_blue = '#c7d1bb'
-color_aqua = '#8ca06b'
+color_bg1 = '#c8c0b2'
+color_bg2 = '#a79e90'
+color_bg3 = '#887763'
+color_blue = '#aab596'
+color_aqua = '#809560'
 color_green = '#72895c'
 color_orange = '#b7c2a3'
 color_purple = '#7c9061'
@@ -358,7 +358,7 @@ format = '[[ $symbol$number ](fg:color_fg0 bg:color_bg1)]($style)'
 [cmd_duration]
 disabled = false
 style = "bg:color_bg1"
-min_time = 500
+min_time = 5000
 show_milliseconds = false
 format = '[[  $duration ](fg:color_fg0 bg:color_bg1)]($style)'
 show_notifications = false
