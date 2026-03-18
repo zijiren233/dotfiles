@@ -1,11 +1,23 @@
 local has_cmp_nvim_lsp, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
 local capabilities = has_cmp_nvim_lsp and cmp_nvim_lsp.default_capabilities() or nil
+local server_binaries = {
+	pylsp = "pylsp",
+	gopls = "gopls",
+	lua_ls = "lua-language-server",
+	bashls = "bash-language-server",
+	rust_analyzer = "rust-analyzer",
+	clangd = "clangd",
+	ocamllsp = "ocamllsp",
+	ruby_lsp = "ruby-lsp",
+	hls = "haskell-language-server-wrapper",
+	ruff = "ruff",
+}
 
 local opts = { noremap = true, silent = true }
 vim.keymap.set("n", "<space>e", vim.diagnostic.open_float, opts)
 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
 vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
-vim.keymap.set("n", "<space>q", vim.diagnostic.setloclist, opts)
+vim.keymap.set("n", "<leader>xL", vim.diagnostic.setloclist, vim.tbl_extend("force", opts, { desc = "Diagnostics to Loclist" }))
 
 local on_attach = function(client, bufnr)
 	vim.bo[bufnr].omnifunc = "v:lua.vim.lsp.omnifunc"
@@ -29,7 +41,7 @@ local on_attach = function(client, bufnr)
 	vim.keymap.set("n", "<space>rn", vim.lsp.buf.rename, bufopts)
 	vim.keymap.set("n", "<space>ca", vim.lsp.buf.code_action, bufopts)
 	vim.keymap.set("n", "gr", vim.lsp.buf.references, bufopts)
-	vim.keymap.set("n", "<space>f", function()
+	vim.keymap.set("n", "<leader>lf", function()
 		local ok, conform = pcall(require, "conform")
 		if ok then
 			conform.format({
@@ -40,7 +52,7 @@ local on_attach = function(client, bufnr)
 		end
 
 		vim.lsp.buf.format({ async = true })
-	end, bufopts)
+	end, vim.tbl_extend("force", bufopts, { desc = "Format Buffer" }))
 end
 
 local function configure(server, config)
@@ -66,6 +78,26 @@ local function configure(server, config)
 	end
 
 	vim.lsp.config(server, merged)
+end
+
+local function is_server_available(server)
+	local config = vim.lsp.config[server]
+	if not config then
+		return false
+	end
+
+	local cmd = config.cmd
+	if type(cmd) == "function" then
+		local binary = server_binaries[server]
+		return binary == nil or vim.fn.executable(binary) == 1
+	end
+
+	if type(cmd) ~= "table" or type(cmd[1]) ~= "string" then
+		local binary = server_binaries[server]
+		return binary == nil or vim.fn.executable(binary) == 1
+	end
+
+	return vim.fn.executable(cmd[1]) == 1
 end
 
 configure("pylsp", {
@@ -148,5 +180,7 @@ for _, server in ipairs({
 	"hls",
 	"ruff",
 }) do
-	vim.lsp.enable(server)
+	if is_server_available(server) then
+		vim.lsp.enable(server)
+	end
 end
