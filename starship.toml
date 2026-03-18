@@ -20,6 +20,8 @@ $cpp\
 $rust\
 $golang\
 $nodejs\
+$bun\
+$deno\
 $php\
 $java\
 $kotlin\
@@ -27,6 +29,7 @@ $haskell\
 $python\
 $dart\
 $cmake\
+$pixi\
 $docker_context\
 $conda\
 $package\
@@ -34,9 +37,8 @@ $package\
 ([](fg:color_bg3)\
 $localip\
 [](fg:color_bg3))\
-[](fg:color_bg2)\
-$memory_usage\
-[](fg:color_bg2 bg:color_bg1)\
+[](fg:color_bg1)\
+$status\
 $jobs\
 $cmd_duration\
 $time\
@@ -46,17 +48,18 @@ $line_break$character"""
 palette = 'gruvbox_dark'
 
 [palettes.gruvbox_dark]
-color_fg0 = '#fbf1c7'
-color_bg1 = '#3c3836'
-color_bg2 = '#83a598'
-color_bg3 = '#8ec07c'
-color_blue = '#458588'
-color_aqua = '#689d6a'
-color_green = '#98971a'
-color_orange = '#d65d0e'
-color_purple = '#b16286'
-color_red = '#cc241d'
-color_yellow = '#d79921'
+color_fg0 = '#1f2933'
+color_bg1 = '#d6d0c4'
+color_bg2 = '#beb5a5'
+color_bg3 = '#a39a89'
+color_blue = '#c7d1bb'
+color_aqua = '#8ca06b'
+color_green = '#72895c'
+color_orange = '#b7c2a3'
+color_purple = '#7c9061'
+color_red = '#6c6250'
+color_error = '#c75b5b'
+color_yellow = '#d2c08c'
 
 [os]
 disabled = false
@@ -125,6 +128,8 @@ read_only = ""
 format = "[  $path( $read_only) ]($style)"
 truncation_length = 3
 truncation_symbol = "…/"
+truncate_to_repo = true
+home_symbol = "~"
 
 [directory.substitutions]
 "Important Documents" = "󰈙"
@@ -250,6 +255,16 @@ symbol = ""
 style = "bg:color_blue"
 format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
 
+[bun]
+symbol = ""
+style = "bg:color_blue"
+format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
+
+[deno]
+symbol = ""
+style = "bg:color_blue"
+format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
+
 [c]
 symbol = ""
 style = "bg:color_blue"
@@ -306,22 +321,26 @@ symbol = "△"
 style = "bg:color_blue"
 format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
 
+[pixi]
+style = "bg:color_blue"
+format = '[[ $symbol( $environment) ](fg:color_fg0 bg:color_blue)]($style)'
+
 [docker_context]
 symbol = ""
 style = "bg:color_blue"
-format = '[[ $symbol( $context) ](fg:#83a598 bg:color_blue)]($style)'
+format = '[[ $symbol( $context) ](fg:color_fg0 bg:color_blue)]($style)'
 
 [conda]
 style = "bg:color_blue"
 symbol = ""
-format = '[[ $symbol( $environment) ](fg:#83a598 bg:color_blue)]($style)'
+format = '[[ $symbol( $environment) ](fg:color_fg0 bg:color_blue)]($style)'
 
 [memory_usage]
 disabled = false
 symbol = "󰍛"
-threshold = -1
+threshold = 75
 style = "bg:color_bg2"
-format = '[[$symbol ${ram}](fg:color_fg0 bg:color_bg2)]($style)'
+format = '[[ $symbol ${ram_pct} ](fg:color_fg0 bg:color_bg2)]($style)'
 
 [localip]
 disabled = false
@@ -334,13 +353,21 @@ disabled = false
 symbol = ""
 style = "bg:color_bg1"
 number_threshold = 1
-format = '[[ $number$symbol](fg:color_fg0 bg:color_bg1)]($style)'
+format = '[[ $symbol$number ](fg:color_fg0 bg:color_bg1)]($style)'
 
 [cmd_duration]
 disabled = false
 style = "bg:color_bg1"
-format = '[[ $duration](fg:color_fg0 bg:color_bg1)]($style)'
+min_time = 500
+show_milliseconds = false
+format = '[[  $duration ](fg:color_fg0 bg:color_bg1)]($style)'
 show_notifications = false
+
+[status]
+disabled = false
+symbol = "✘ "
+style = "bg:color_bg1"
+format = '[[ $symbol$status ](fg:color_error bg:color_bg1)]($style)'
 
 [time]
 disabled = false
@@ -354,7 +381,7 @@ disabled = false
 [character]
 disabled = false
 success_symbol = '[](bold fg:color_green)'
-error_symbol = '[](bold fg:color_red)'
+error_symbol = '[](bold fg:color_error)'
 vimcmd_symbol = '[](bold fg:color_green)'
 vimcmd_replace_one_symbol = '[](bold fg:color_purple)'
 vimcmd_replace_symbol = '[](bold fg:color_purple)'
