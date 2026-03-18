@@ -11,6 +11,7 @@ configs.setup({
 		"lua",
 		"bash",
 		"vim",
+		"regex",
 		"yaml",
 		"toml",
 		"rust",
@@ -23,9 +24,9 @@ configs.setup({
 		"go",
 		"gotmpl",
 		"nginx",
-		"rust",
 		"sql",
 		"diff",
+		"markdown",
 		"markdown_inline",
 	},
 	-- Install parsers synchronously (only applied to `ensure_installed`)
@@ -80,11 +81,6 @@ configs.setup({
 			node_decremental = "gsd",
 		},
 	},
-	rainbow = {
-		enable = true,
-		extended_mode = true,
-		max_file_lines = nil,
-	},
 })
 
 -- Hints:
@@ -99,8 +95,8 @@ configs.setup({
 vim.api.nvim_create_autocmd({ "BufEnter", "BufAdd", "BufNew", "BufNewFile", "BufWinEnter" }, {
 	group = vim.api.nvim_create_augroup("TS_FOLD_WORKAROUND", {}),
 	callback = function()
-		vim.opt.foldmethod = "expr"
-		vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
-		vim.opt.foldenable = false
+		vim.wo.foldmethod = "expr"
+		vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+		vim.wo.foldenable = false
 	end,
 })

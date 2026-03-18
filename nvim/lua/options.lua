@@ -1,7 +1,4 @@
-local init_vim_path = vim.fn.expand("~/.config/nvim/init.vim")
-if vim.fn.filereadable(init_vim_path) == 1 then
-    vim.cmd(string.format([[source %s]], init_vim_path))
-end
+vim.opt.laststatus = 3
 
 -- vim.opt.clipboard:append("unnamedplus")
 -- if vim.fn.exists('$SSH_TTY') == 1 and vim.env.TMUX == nil then

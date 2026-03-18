@@ -91,3 +91,7 @@ set splitright                 " 新窗口默认在右侧
 set laststatus=0               " 不显示状态栏
 set showcmd                    " 显示不完整命令
 " set jumpoptions=stack         " 9.0以上才可用
+
+if has('nvim')
+  lua require('init_nvim')
+endif
