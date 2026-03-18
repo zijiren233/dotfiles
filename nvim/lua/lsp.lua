@@ -30,15 +30,16 @@ local on_attach = function(client, bufnr)
 	vim.keymap.set("n", "<space>ca", vim.lsp.buf.code_action, bufopts)
 	vim.keymap.set("n", "gr", vim.lsp.buf.references, bufopts)
 	vim.keymap.set("n", "<space>f", function()
-		vim.lsp.buf.format({
-			async = true,
-			filter = function(format_client)
-				return format_client.name == "null-ls"
-					or format_client.name == "hls"
-					or format_client.name == "rust_analyzer"
-					or format_client.name == "ruff"
-			end,
-		})
+		local ok, conform = pcall(require, "conform")
+		if ok then
+			conform.format({
+				async = true,
+				lsp_format = "fallback",
+			})
+			return
+		end
+
+		vim.lsp.buf.format({ async = true })
 	end, bufopts)
 end
 

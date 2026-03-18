@@ -32,21 +32,6 @@ return {
 		},
 	},
 	{
-		"nvimtools/none-ls.nvim",
-		lazy = true,
-	},
-	{
-		"jay-babu/mason-null-ls.nvim",
-		event = { "BufReadPre", "BufNewFile" },
-		dependencies = {
-			"mason-org/mason.nvim",
-			"nvimtools/none-ls.nvim",
-		},
-		config = function()
-			require("config.mason-null-ls")
-		end,
-	},
-	{
 		"neovim/nvim-lspconfig",
 		event = { "BufReadPre", "BufNewFile" },
 		config = function()

@@ -10,10 +10,8 @@ set visualbell                 " 禁止响铃
 set ruler                      " 显示当前光标位置
 set autoread                   " 文件在 Vim 之外修改过，自动重新读入
 set autowrite                  " 自动保存
-set autochdir                  " 当前目录随着被编辑文件的改变而改变
 set nocp                       " 使用 Vim 而非 Vi
 set mouse=a                    " 开启鼠标支持
-set clipboard=unnamed          " 使用系统剪贴板
 set cursorline                 " 突出显示当前行
 set guioptions-=T              " 隐藏工具栏
 set guioptions-=m              " 隐藏菜单栏
@@ -88,10 +86,13 @@ set novisualbell
 " 额外优化
 set splitbelow                 " 新窗口默认在下方
 set splitright                 " 新窗口默认在右侧
-set laststatus=0               " 不显示状态栏
 set showcmd                    " 显示不完整命令
 " set jumpoptions=stack         " 9.0以上才可用
 
 if has('nvim')
   lua require('init_nvim')
+else
+  set autochdir
+  set clipboard=unnamed
+  set laststatus=0
 endif
