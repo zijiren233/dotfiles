@@ -105,7 +105,9 @@ configure("lua_ls", {
 	},
 })
 
-configure("bashls", {})
+configure("bashls", {
+	on_attach = on_attach,
+})
 
 configure("rust_analyzer", {
 	on_attach = on_attach,
