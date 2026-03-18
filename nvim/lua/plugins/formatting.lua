@@ -40,7 +40,7 @@ return {
 			vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {
 				group = group,
 				callback = function()
-					local names = lint._resolve_linter_by_ft(vim.bo.filetype)
+					local names = lint.linters_by_ft[vim.bo.filetype] or {}
 					if #names == 0 then
 						return
 					end

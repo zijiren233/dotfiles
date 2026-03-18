@@ -1,6 +1,5 @@
 " 基础设置
 set nocompatible
-set t_Co=256
 if has("termguicolors")
   set termguicolors              " 启用真彩色
 endif
@@ -10,11 +9,8 @@ set visualbell                 " 禁止响铃
 set ruler                      " 显示当前光标位置
 set autoread                   " 文件在 Vim 之外修改过，自动重新读入
 set autowrite                  " 自动保存
-set nocp                       " 使用 Vim 而非 Vi
 set mouse=a                    " 开启鼠标支持
 set cursorline                 " 突出显示当前行
-set guioptions-=T              " 隐藏工具栏
-set guioptions-=m              " 隐藏菜单栏
 set iskeyword+=_,$,@,%,#,-     " 单词包含特殊符号
 set backspace=indent,eol,start " 使回格键正常处理
 set whichwrap+=<,>,h,l         " 允许光标键跨越行边界
@@ -35,7 +31,6 @@ set smartcase                  " 智能大小写搜索
 set cindent                    " C/C++ 自动缩进
 set smartindent                " 智能缩进
 set autoindent                 " 自动缩进
-filetype indent on             " 根据文件类型进行缩进
 set softtabstop=4              " 软制表符宽度
 set tabstop=4                  " 制表符宽度
 set shiftwidth=4               " 自动缩进宽度
@@ -46,23 +41,24 @@ syntax on                      " 启用语法高亮
 
 " 文件编码
 set encoding=utf-8
-set fileencodings=utf-8,ucs-bom,shift-jis,gb18030,gbk,gb2312,cp936
+
+" 多字节支持
+if has("multi_byte")
+  set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936,shift-jis,big5,euc-jp,euc-kr,latin1
+else
+  echoerr "Sorry, this version of (g)vim was not compiled with multi_byte"
+endif
 
 " 语言设置
 set langmenu=zh_CN.UTF-8
 set helplang=cn
 
-" 多字节支持
-if has("multi_byte")
-  set fileencodings=utf-8,ucs-bom,cp936,cp1250,big5,euc-jp,euc-kr,latin1
-else
-  echoerr "Sorry, this version of (g)vim was not compiled with multi_byte"
-endif
-
 " gVim 设置
 if has("gui_running")
   colorscheme morning
   set guifont=Monaco:h13
+  set guioptions-=T            " 隐藏工具栏
+  set guioptions-=m            " 隐藏菜单栏
   set guioptions=mr             " 只显示菜单和右侧滚动条
 endif
 
@@ -72,7 +68,10 @@ set nobackup                   " 不生成备份文件
 set nowritebackup              " 不生成写入备份文件
 
 " 自动命令
-autocmd BufNewFile,BufEnter *.txt set ft=confluencewiki
+augroup zjr_filetypes
+  autocmd!
+  autocmd BufNewFile,BufEnter *.txt setfiletype confluencewiki
+augroup END
 
 " 命令行补全
 set wildmenu                   " 命令行自动补全
