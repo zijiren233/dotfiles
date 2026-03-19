@@ -1,0 +1,752 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+{
+  "agent_ui_font_size": 13.0,
+  "document_folding_ranges": "on",
+  "document_symbols": "on",
+  "icon_theme": "Material Icon Theme",
+  "language_models": {
+    "anthropic": {
+      "api_url": "https://obegeiepkdvx.sealoshzh.site",
+    },
+  },
+  "edit_predictions": {
+    "provider": "copilot",
+  },
+  "agent": {
+    "enable_feedback": false,
+    "default_model": {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6-latest",
+    },
+    "inline_alternatives": [
+      {
+        "provider": "anthropic",
+        "model": "claude-opus-4-6",
+      },
+    ],
+  },
+  "telemetry": {
+    "metrics": false,
+    "diagnostics": false,
+  },
+  "ui_font_size": 13.0,
+  "buffer_font_size": 12.0,
+  "theme": {
+    "mode": "dark",
+    "light": "Gruvbox Light Hard",
+    "dark": "One Dark Pro",
+  },
+  "buffer_font_family": "Maple Mono Normal NFMono CN",
+  "buffer_font_fallbacks": [
+    "Maple Mono Normal NF CN",
+    "Maple Mono NF",
+    "Zed Plex Mono",
+  ],
+  "ui_font_family": "Maple Mono Normal NFMono CN",
+  "ui_font_fallbacks": [
+    "Maple Mono Normal NF CN",
+    "Maple Mono NF",
+    "Zed Plex Mono",
+  ],
+  "ui_font_features": {
+    "calt": false,
+  },
+  "terminal": {
+    "font_family": "Maple Mono Normal NFMono CN",
+    "font_fallbacks": [
+      "Maple Mono Normal NF CN",
+      "Maple Mono NF",
+      "Zed Plex Mono",
+    ],
+    "font_size": 12,
+    "line_height": "standard",
+    "font_features": {
+      "calt": false,
+    },
+    "env": {
+      "GIT_EDITOR": "zed --wait",
+    },
+  },
+  "auto_install_extensions": {
+    "bash": true,
+    "dart": true,
+    "docker-compose": true,
+    "dockerfile": true,
+    "helm": true,
+    "html": true,
+    "lua": true,
+    "make": true,
+    "proto": true,
+    "sql": true,
+    "swift": true,
+    "toml": true,
+    "vue": true,
+    "xml": true,
+    "one-dark-pro": true,
+    "material-icon-theme": true,
+    "log": true,
+    "csv": true,
+    "github-actions": true,
+    "neocmake": true,
+    "live-server": true,
+    "git-firefly": true,
+  },
+  "file_types": {
+    "Dockerfile": ["Dockerfile*"],
+    "Helm": [
+      "**/templates/**/*.tpl",
+      "**/templates/**/*.yaml",
+      "**/templates/**/*.yml",
+      "**/helmfile.d/**/*.yaml",
+      "**/helmfile.d/**/*.yml",
+      "**/values*.yaml",
+    ],
+    "HTML": ["mjml"],
+    "Makefile": ["Makefile*"],
+    "GitHub Actions": [".github/workflows/*.yml", ".github/workflows/*.yaml"],
+    "Diff": ["dif"],
+    "XML": ["rdf", "gpx", "kml"],
+    "Git Attributes": ["**/{git,.git,.git/info}/attributes"],
+    "Git Config": [
+      "*.gitconfig",
+      "**/{git,.git/modules,.git/modules/*}/config",
+    ],
+    "Git Ignore": ["**/{git,.git}/ignore", "**/.git/info/exclude"],
+  },
+  "semantic_tokens": "combined",
+  "auto_signature_help": true,
+  "show_signature_help_after_edits": true,
+  "hover_popover_delay": 200,
+  "scroll_sensitivity": 1.0,
+  "fast_scroll_sensitivity": 2.0,
+  "vertical_scroll_margin": 4,
+  "scroll_beyond_last_line": "vertical_scroll_margin",
+  "current_line_highlight": "all",
+  "show_whitespaces": "boundary",
+  "show_wrap_guides": true,
+  "wrap_guides": [100],
+  "indent_guides": {
+    "enabled": true,
+    "coloring": "indent_aware",
+  },
+  "inlay_hints": {
+    "enabled": true,
+    "show_type_hints": true,
+    "show_parameter_hints": true,
+    "show_other_hints": true,
+    "show_background": true,
+    "edit_debounce_ms": 350,
+    "scroll_debounce_ms": 20,
+    "toggle_on_modifiers_press": {
+      "alt": true,
+    },
+  },
+  "minimap": {
+    "show": "always",
+    "thumb": "always",
+    "current_line_highlight": "line",
+  },
+  "scrollbar": {
+    "diagnostics": "warning",
+  },
+  "tabs": {
+    "file_icons": true,
+    "git_status": true,
+    "show_diagnostics": "all",
+  },
+  "git": {
+    "gutter_debounce": 100,
+    "inline_blame": {
+      "enabled": true,
+      "delay_ms": 800,
+      "show_commit_summary": true,
+      "min_column": 120,
+    },
+  },
+  "edit_predictions_disabled_in": ["comment", "string"],
+  "snippet_sort_order": "none",
+  "diagnostics": {
+    "inline": {
+      "enabled": true,
+      "update_debounce_ms": 150,
+      "min_column": 100,
+      "max_severity": "warning",
+    },
+  },
+  "lsp": {
+    "clangd": {
+      "binary": {
+        "ignore_system_version": false,
+      },
+    },
+    "dart": {
+      "settings": {
+        "lineLength": 100,
+      },
+    },
+    "gopls": {
+      "initialization_options": {
+        "usePlaceholders": true,
+        "completionBudget": "500ms",
+        "gofumpt": false,
+        "codelenses": {
+          "run_govulncheck": true,
+        },
+        "analyses": {
+          "shadow": false,
+          "unusedvariable": true,
+        },
+        "staticcheck": true,
+        "vulncheck": "Imports",
+        "semanticTokens": true,
+        "semanticTokenTypes": {
+          "string": false,
+          "number": false,
+        },
+        "linksInHover": false,
+        "hints": {
+          "assignVariableTypes": false,
+          "compositeLiteralFields": true,
+          "compositeLiteralTypes": true,
+          "constantValues": true,
+          "functionTypeParameters": true,
+          "parameterNames": true,
+          "rangeVariableTypes": true,
+        },
+      },
+    },
+    "rust-analyzer": {
+      "binary": {
+        "ignore_system_version": true,
+      },
+      "enable_lsp_tasks": true,
+      "initialization_options": {
+        "cargo": {
+          "extraEnv": {
+            "RUSTUP_AUTO_INSTALL": "1",
+            "RUST_BACKTRACE": "full",
+            "RUSTC_WRAPPER": "sccache",
+            "SCCACHE_CACHE_SIZE": "10G",
+          },
+          "features": "all",
+          "allTargets": false,
+        },
+        "rust": {
+          "analyzerTargetDir": true,
+        },
+        "assist": {
+          "emitMustUse": true,
+          "preferSelf": true,
+        },
+        "completion": {
+          "fullFunctionSignatures": {
+            "enable": true,
+          },
+          "termSearch": {
+            "enable": true,
+          },
+          "snippets": {
+            "custom": {
+              "Arc::new": {
+                "postfix": "arc",
+                "body": ["Arc::new(${receiver})"],
+                "requires": "std::sync::Arc",
+                "scope": "expr",
+              },
+              "Some": {
+                "postfix": "some",
+                "body": ["Some(${receiver})"],
+                "scope": "expr",
+              },
+              "Ok": {
+                "postfix": "ok",
+                "body": ["Ok(${receiver})"],
+                "scope": "expr",
+              },
+              "Rc::new": {
+                "postfix": "rc",
+                "body": ["Rc::new(${receiver})"],
+                "requires": "std::rc::Rc",
+                "scope": "expr",
+              },
+              "Box::pin": {
+                "postfix": "boxpin",
+                "body": ["Box::pin(${receiver})"],
+                "requires": "std::boxed::Box",
+                "scope": "expr",
+              },
+              "vec!": {
+                "postfix": "vec",
+                "body": ["vec![${receiver}]"],
+                "description": "vec![]",
+                "scope": "expr",
+              },
+            },
+          },
+        },
+        "diagnostics": {
+          "styleLints": {
+            "enable": true,
+          },
+          "experimental": {
+            "enable": true,
+          },
+        },
+        "hover": {
+          "actions": {
+            "enable": true,
+            "references": {
+              "enable": true,
+            },
+          },
+          "memoryLayout": {
+            "niches": true,
+          },
+        },
+        "imports": {
+          "granularity": {
+            "enforce": true,
+          },
+          "preferNoStd": false,
+          "preferPrelude": true,
+        },
+        "inlayHints": {
+          "maxLength": null,
+          "bindingModeHints": {
+            "enable": true,
+          },
+          "closureCaptureHints": {
+            "enable": true,
+          },
+          "closureReturnTypeHints": {
+            "enable": "with_block",
+          },
+          "discriminantHints": {
+            "enable": "fieldless",
+          },
+          "genericParameterHints": {
+            "lifetime": {
+              "enable": true,
+            },
+            "type": {
+              "enable": true,
+            },
+          },
+          "implicitDrops": {
+            "enable": true,
+          },
+          "implicitSizedBoundHints": {
+            "enable": true,
+          },
+          "lifetimeElisionHints": {
+            "enable": "skip_trivial",
+            "useParameterNames": true,
+          },
+          "rangeExclusiveHints": {
+            "enable": true,
+          },
+          "renderColons": false,
+        },
+        "lens": {
+          "enable": true,
+          "references": {
+            "adt": {
+              "enable": true,
+            },
+            "enumVariant": {
+              "enable": true,
+            },
+            "method": {
+              "enable": true,
+            },
+            "trait": {
+              "enable": true,
+            },
+          },
+        },
+        "lru": {
+          "capacity": 512,
+        },
+        "notifications": {
+          "cargoTomlNotFound": false,
+        },
+        "rustfmt": {
+          "extraArgs": ["--config", "use_field_init_shorthand=true"],
+        },
+        "check": {
+          "command": "clippy",
+          "workspace": false,
+          "allTargets": false,
+          "extraArgs": [
+            "--tests",
+            "--lib",
+            "--bins",
+            "--benches",
+            "--",
+            "-W",
+            "clippy::pedantic",
+            "-A",
+            "clippy::struct_excessive_bools",
+            "-A",
+            "clippy::case_sensitive_file_extension_comparisons",
+            "-A",
+            "clippy::missing-fields-in-debug",
+            "-A",
+            "clippy::trivially-copy-pass-by-ref",
+            "-A",
+            "clippy::default-trait-access",
+            "-A",
+            "clippy::match-wildcard-for-single-variants",
+            "-A",
+            "clippy::explicit-deref-methods",
+            "-A",
+            "clippy::too-many-lines",
+            "-A",
+            "clippy::missing-errors-doc",
+            "-A",
+            "clippy::missing-panics-doc",
+            "-A",
+            "clippy::must-use-candidate",
+            "-A",
+            "clippy::wildcard-imports",
+            "-W",
+            "clippy::nursery",
+            "-A",
+            "clippy::redundant-pub-crate",
+            "-D",
+            "clippy::style",
+            "-D",
+            "clippy::complexity",
+            "-D",
+            "clippy::perf",
+            "-A",
+            "clippy::similar-names",
+            "-D",
+            "clippy::todo",
+            "-D",
+            "clippy::cargo",
+            "-A",
+            "clippy::multiple_crate_versions",
+            "-A",
+            "clippy::cargo-common-metadata",
+            "-A",
+            "clippy::doc_markdown",
+          ],
+          "features": "all",
+        },
+        "checkOnSave": true,
+        "semanticHighlighting": {
+          "operator": {
+            "specialization": {
+              "enable": true,
+            },
+          },
+          "punctuation": {
+            "enable": true,
+            "separate": {
+              "macro": {
+                "bang": true,
+              },
+            },
+            "specialization": {
+              "enable": true,
+            },
+          },
+        },
+      },
+    },
+    "tailwindcss-language-server": {
+      "settings": {
+        "includeLanguages": {
+          "vue": "html",
+        },
+        "experimental": {
+          "classRegex": [
+            "class=\"([^\"]*)\"",
+            "class='([^']*)'",
+            ":class=\"([^\"]*)\"",
+            ":class='([^']*)'",
+          ],
+        },
+      },
+    },
+  },
+  "languages": {
+    "C": {
+      "colorize_brackets": true,
+      "indent_guides": {
+        "background_coloring": "indent_aware",
+      },
+      "formatter": "language_server",
+      "format_on_save": "on",
+      "document_symbols": "on",
+      "document_folding_ranges": "on",
+      "tab_size": 2,
+    },
+    "C++": {
+      "colorize_brackets": true,
+      "indent_guides": {
+        "background_coloring": "indent_aware",
+      },
+      "formatter": "language_server",
+      "format_on_save": "on",
+      "document_symbols": "on",
+      "document_folding_ranges": "on",
+      "tab_size": 2,
+    },
+    "CSS": {
+      "colorize_brackets": true,
+      "indent_guides": {
+        "background_coloring": "indent_aware",
+      },
+      "format_on_save": "on",
+      "language_servers": ["tailwindcss-intellisense-css", "..."],
+    },
+    "Dart": {
+      "colorize_brackets": true,
+      "indent_guides": {
+        "background_coloring": "indent_aware",
+      },
+      "formatter": "language_server",
+      "format_on_save": "on",
+      "document_symbols": "on",
+      "document_folding_ranges": "on",
+      "preferred_line_length": 100,
+      "tab_size": 2,
+    },
+    "Diff": {
+      "colorize_brackets": true,
+      "indent_guides": {
+        "background_coloring": "indent_aware",
+      },
+      "tab_size": 2,
+      "hard_tabs": false,
+    },
+    "Dockerfile": {
+      "colorize_brackets": true,
+      "indent_guides": {
+        "background_coloring": "indent_aware",
+      },
+      "formatter": "language_server",
+      "format_on_save": "on",
+      "document_symbols": "on",
+      "document_folding_ranges": "on",
+    },
+    "Go": {
+      "colorize_brackets": true,
+      "indent_guides": {
+        "background_coloring": "indent_aware",
+      },
+      "formatter": [
+        {
+          "external": {
+            "command": "golangci-lint",
+            "arguments": ["fmt", "--stdin"],
+          },
+        },
+        {
+          "code_action": "source.organizeImports",
+        },
+      ],
+      "format_on_save": "on",
+      "document_symbols": "on",
+      "document_folding_ranges": "on",
+      "preferred_line_length": 100,
+      "hard_tabs": true,
+      "tab_size": 4,
+    },
+    "Helm": {
+      "colorize_brackets": true,
+      "indent_guides": {
+        "background_coloring": "indent_aware",
+      },
+      "formatter": "language_server",
+      "format_on_save": "on",
+      "document_symbols": "on",
+      "document_folding_ranges": "on",
+      "tab_size": 2,
+      "hard_tabs": false,
+    },
+    "HTML": {
+      "colorize_brackets": true,
+      "indent_guides": {
+        "background_coloring": "indent_aware",
+      },
+      "format_on_save": "on",
+    },
+    "JavaScript": {
+      "colorize_brackets": true,
+      "indent_guides": {
+        "background_coloring": "indent_aware",
+      },
+      "format_on_save": "on",
+      "document_symbols": "on",
+      "document_folding_ranges": "on",
+    },
+    "JSON": {
+      "colorize_brackets": true,
+      "indent_guides": {
+        "background_coloring": "indent_aware",
+      },
+      "format_on_save": "on",
+      "document_symbols": "on",
+      "document_folding_ranges": "on",
+    },
+    "Lua": {
+      "colorize_brackets": true,
+      "indent_guides": {
+        "background_coloring": "indent_aware",
+      },
+      "formatter": "language_server",
+      "format_on_save": "on",
+      "document_symbols": "on",
+      "document_folding_ranges": "on",
+      "preferred_line_length": 100,
+      "tab_size": 4,
+    },
+    "Makefile": {
+      "colorize_brackets": true,
+      "indent_guides": {
+        "background_coloring": "indent_aware",
+      },
+      "hard_tabs": true,
+      "tab_size": 4,
+      "show_whitespaces": "all",
+    },
+    "Proto": {
+      "colorize_brackets": true,
+      "indent_guides": {
+        "background_coloring": "indent_aware",
+      },
+      "formatter": "language_server",
+      "format_on_save": "on",
+      "document_symbols": "on",
+      "document_folding_ranges": "on",
+    },
+    "Python": {
+      "colorize_brackets": true,
+      "indent_guides": {
+        "background_coloring": "indent_aware",
+      },
+      "format_on_save": "on",
+      "document_symbols": "on",
+      "document_folding_ranges": "on",
+      "preferred_line_length": 100,
+      "tab_size": 4,
+    },
+    "Rust": {
+      "colorize_brackets": true,
+      "indent_guides": {
+        "background_coloring": "indent_aware",
+      },
+      "formatter": [
+        {
+          "language_server": {
+            "name": "rust-analyzer",
+          },
+        },
+        {
+          "code_action": "source.organizeImports",
+        },
+      ],
+      "format_on_save": "on",
+      "document_symbols": "on",
+      "document_folding_ranges": "on",
+      "preferred_line_length": 100,
+      "hard_tabs": false,
+      "tab_size": 4,
+    },
+    "Shell Script": {
+      "colorize_brackets": true,
+      "indent_guides": {
+        "background_coloring": "indent_aware",
+      },
+      "formatter": {
+        "external": {
+          "command": "shfmt",
+          "arguments": ["--filename", "{buffer_path}", "--indent", "2"],
+        },
+      },
+      "format_on_save": "on",
+      "tab_size": 2,
+      "hard_tabs": false,
+    },
+    "SQL": {
+      "colorize_brackets": true,
+      "indent_guides": {
+        "background_coloring": "indent_aware",
+      },
+      "document_symbols": "on",
+      "document_folding_ranges": "on",
+    },
+    "Swift": {
+      "colorize_brackets": true,
+      "indent_guides": {
+        "background_coloring": "indent_aware",
+      },
+      "formatter": "language_server",
+      "format_on_save": "on",
+      "document_symbols": "on",
+      "document_folding_ranges": "on",
+      "preferred_line_length": 100,
+      "tab_size": 4,
+    },
+    "TOML": {
+      "colorize_brackets": true,
+      "indent_guides": {
+        "background_coloring": "indent_aware",
+      },
+      "formatter": "language_server",
+      "format_on_save": "on",
+      "document_symbols": "on",
+      "document_folding_ranges": "on",
+      "tab_size": 2,
+      "hard_tabs": false,
+    },
+    "TypeScript": {
+      "colorize_brackets": true,
+      "indent_guides": {
+        "background_coloring": "indent_aware",
+      },
+      "format_on_save": "on",
+      "document_symbols": "on",
+      "document_folding_ranges": "on",
+    },
+    "Vue": {
+      "colorize_brackets": true,
+      "indent_guides": {
+        "background_coloring": "indent_aware",
+      },
+      "format_on_save": "on",
+      "document_symbols": "on",
+      "document_folding_ranges": "on",
+    },
+    "XML": {
+      "colorize_brackets": true,
+      "indent_guides": {
+        "background_coloring": "indent_aware",
+      },
+      "document_symbols": "on",
+      "document_folding_ranges": "on",
+      "tab_size": 2,
+      "hard_tabs": false,
+    },
+    "YAML": {
+      "colorize_brackets": true,
+      "indent_guides": {
+        "background_coloring": "indent_aware",
+      },
+      "formatter": "language_server",
+      "format_on_save": "on",
+      "tab_size": 2,
+      "hard_tabs": false,
+    },
+  },
+}

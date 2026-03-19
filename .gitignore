@@ -5,3 +5,5 @@
 !nvim/
 !nvim/**
 !starship.toml
+!zed/
+!zed/settings.json
