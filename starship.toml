@@ -38,12 +38,11 @@ $package\
 $localip\
 [](fg:color_bg3))\
 [](fg:color_bg1)\
-$status\
 $jobs\
 $cmd_duration\
 $time\
 [](fg:color_bg1)\
-$line_break$character"""
+$line_break$status$character"""
 
 palette = 'gruvbox_dark'
 
@@ -366,8 +365,8 @@ show_notifications = false
 [status]
 disabled = false
 symbol = "✘ "
-style = "bg:color_bg1"
-format = '[[ $symbol$status ](fg:color_error bg:color_bg1)]($style)'
+style = "fg:color_error"
+format = '[$symbol$status]($style) '
 
 [time]
 disabled = false
