@@ -7,6 +7,14 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "auto_update": false,
+  "colorize_brackets": true,
+  "collaboration_panel": {
+    "button": false,
+  },
+  "outline_panel": {
+    "button": false,
+  },
   "agent_ui_font_size": 13.0,
   "document_folding_ranges": "on",
   "document_symbols": "on",
@@ -49,6 +57,10 @@
     "Maple Mono NF",
     "Zed Plex Mono",
   ],
+  "buffer_font_features": {
+    "calt": true,
+    "liga": true,
+  },
   "ui_font_family": "Maple Mono Normal NFMono CN",
   "ui_font_fallbacks": [
     "Maple Mono Normal NF CN",
@@ -59,6 +71,8 @@
     "calt": false,
   },
   "terminal": {
+    "path_hyperlink_timeout_ms": 100,
+    "cursor_shape": "bar",
     "font_family": "Maple Mono Normal NFMono CN",
     "font_fallbacks": [
       "Maple Mono Normal NF CN",
@@ -69,6 +83,7 @@
     "line_height": "standard",
     "font_features": {
       "calt": false,
+      "liga": false,
     },
     "env": {
       "GIT_EDITOR": "zed --wait",
@@ -97,6 +112,7 @@
     "neocmake": true,
     "live-server": true,
     "git-firefly": true,
+    "scss": true,
   },
   "file_types": {
     "Dockerfile": ["Dockerfile*"],
