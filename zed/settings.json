@@ -8,6 +8,60 @@
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
   "restore_on_startup": "launchpad",
+  "base_keymap": "VSCode",
+  "preview_tabs": {
+    "enabled": true,
+    "enable_preview_from_project_panel": true,
+    "enable_preview_from_file_finder": false,
+    "enable_preview_from_multibuffer": true,
+    "enable_preview_multibuffer_from_code_navigation": false,
+    "enable_preview_file_from_code_navigation": true,
+    "enable_keep_preview_on_code_navigation": false,
+  },
+  "project_panel": {
+    "button": true,
+    "dock": "left",
+    "git_status": true,
+    "auto_reveal_entries": true,
+    "auto_fold_dirs": true,
+    "indent_guides": {
+      "show": "always",
+    },
+  },
+  "git_panel": {
+    "button": true,
+    "dock": "left",
+    "sort_by_path": true,
+    "collapse_untracked_diff": true,
+    "starts_open": false,
+  },
+  "tab_bar": {
+    "show": true,
+    "show_nav_history_buttons": true,
+    "show_tab_bar_buttons": true,
+  },
+  "title_bar": {
+    "show_branch_icon": false,
+    "show_branch_name": true,
+    "show_project_items": true,
+    "show_onboarding_banner": false,
+    "show_user_picture": false,
+    "show_user_menu": false,
+    "show_sign_in": false,
+    "show_menus": true,
+  },
+  "toolbar": {
+    "breadcrumbs": true,
+    "quick_actions": true,
+    "selections_menu": false,
+    "agent_review": false,
+    "code_actions": true,
+  },
+  "status_bar": {
+    "active_language_button": true,
+    "cursor_position_button": true,
+    "line_endings_button": true,
+  },
   "sticky_scroll": {
     "enabled": true,
   },
@@ -129,7 +183,7 @@
       "**/values*.yaml",
     ],
     "HTML": ["mjml"],
-    "Makefile": ["Makefile*"],
+    "Make": ["Makefile*"],
     "GitHub Actions": [".github/workflows/*.yml", ".github/workflows/*.yaml"],
     "Diff": ["dif"],
     "XML": ["rdf", "gpx", "kml"],
@@ -631,7 +685,7 @@
       "preferred_line_length": 100,
       "tab_size": 4,
     },
-    "Makefile": {
+    "Make": {
       "colorize_brackets": true,
       "indent_guides": {
         "background_coloring": "indent_aware",
@@ -739,7 +793,7 @@
       "document_symbols": "on",
       "document_folding_ranges": "on",
     },
-    "Vue": {
+    "Vue.js": {
       "colorize_brackets": true,
       "indent_guides": {
         "background_coloring": "indent_aware",
