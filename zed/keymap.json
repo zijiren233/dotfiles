@@ -6,7 +6,8 @@
       "alt-down": "editor::MoveLineDown",
       "shift-alt-up": "editor::DuplicateLineUp",
       "shift-alt-down": "editor::DuplicateLineDown",
-      "cmd-\\\\": "pane::SplitRight"
-    }
-  }
+      "shift-alt-f": "editor::Format",
+      "cmd-\\\\": "pane::SplitRight",
+    },
+  },
 ]
