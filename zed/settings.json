@@ -31,9 +31,10 @@
   "git_panel": {
     "button": true,
     "dock": "left",
-    "sort_by_path": true,
     "collapse_untracked_diff": true,
-    "starts_open": false,
+    "status_style": "label_color",
+    "show_count_badge": true,
+    "file_icons": true,
   },
   "tab_bar": {
     "show": true,
