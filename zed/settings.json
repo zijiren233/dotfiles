@@ -6,6 +6,7 @@
 // To see all of Zed's default settings without changing your
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
+// main default: https://github.com/zed-industries/zed/blob/main/assets/settings/default.json
 {
   "search": {
     "include_ignored": true,
@@ -58,6 +59,7 @@
     "indent_guides": {
       "show": "always",
     },
+    "git_status_indicator": true,
   },
   "use_autoclose": true,
   "always_treat_brackets_as_autoclosed": true,
@@ -68,6 +70,8 @@
     "status_style": "label_color",
     "show_count_badge": true,
     "file_icons": true,
+    "tree_view": true,
+    "starts_open": false,
   },
   "tab_bar": {
     "show": true,
