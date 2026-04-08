@@ -529,10 +529,7 @@
           "workspace": false,
           "allTargets": false,
           "extraArgs": [
-            "--tests",
-            "--lib",
-            "--bins",
-            "--benches",
+            "--all-targets",
             "--",
             "-W",
             "clippy::pedantic",
