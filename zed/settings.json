@@ -527,9 +527,9 @@
         "check": {
           "command": "clippy",
           "workspace": false,
-          "allTargets": false,
+          "allTargets": true,
+          // "features": "all",
           "extraArgs": [
-            "--all-targets",
             "--",
             "-W",
             "clippy::pedantic",
@@ -580,7 +580,6 @@
             "-A",
             "clippy::cargo_common_metadata",
           ],
-          "features": "all",
         },
         "checkOnSave": true,
         "semanticHighlighting": {
