@@ -350,10 +350,6 @@
         "staticcheck": true,
         "vulncheck": "Imports",
         "semanticTokens": true,
-        "semanticTokenTypes": {
-          "string": false,
-          "number": false,
-        },
         "linksInHover": false,
         "hints": {
           "assignVariableTypes": false,
