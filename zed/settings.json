@@ -529,6 +529,8 @@
             "-W",
             "clippy::pedantic",
             "-A",
+            "clippy::needless_for_each",
+            "-A",
             "clippy::doc_markdown",
             "-A",
             "clippy::struct_excessive_bools",
