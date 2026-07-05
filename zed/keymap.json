@@ -7,7 +7,38 @@
       "shift-alt-up": "editor::DuplicateLineUp",
       "shift-alt-down": "editor::DuplicateLineDown",
       "shift-alt-f": "editor::Format",
+      "ctrl-space": "editor::ShowCompletions",
+      "cmd-i": "editor::ShowCompletions",
+      "cmd-shift-space": "editor::ShowSignatureHelp",
+      "cmd-.": "editor::ToggleCodeActions",
+      "cmd-k cmd-i": "editor::Hover",
+      "cmd-alt-/": "editor::ShowEditPrediction",
+      "ctrl-cmd-e": "editor::ToggleEditPrediction",
+      "ctrl-cmd-i": "edit_prediction::ToggleMenu",
       "cmd-\\\\": "pane::SplitRight",
+    },
+  },
+  {
+    "context": "Editor && showing_completions",
+    "bindings": {
+      "tab": "editor::ComposeCompletion",
+      "enter": "editor::ConfirmCompletion",
+      "shift-enter": "editor::ConfirmCompletionReplace",
+    },
+  },
+  {
+    "context": "Editor && edit_prediction && !showing_completions",
+    "bindings": {
+      "tab": "editor::AcceptEditPrediction",
+      "cmd-right": "editor::AcceptNextWordEditPrediction",
+      "cmd-down": "editor::AcceptNextLineEditPrediction",
+      "alt-tab": "editor::AcceptEditPrediction",
+    },
+  },
+  {
+    "context": "Editor && !edit_prediction",
+    "bindings": {
+      "alt-tab": "editor::ShowEditPrediction",
     },
   },
 ]
