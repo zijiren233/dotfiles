@@ -72,6 +72,8 @@
     "status_style": "label_color",
     "show_count_badge": true,
     "file_icons": true,
+    "group_by": "none",
+    "entry_primary_click_action": "project_diff",
     "tree_view": true,
     "starts_open": false,
     "commit_title_max_length": 72,
