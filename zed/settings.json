@@ -427,18 +427,15 @@
     },
     "rust-analyzer": {
       "binary": {
-        "ignore_system_version": true,
+        "ignore_system_version": false,
       },
       "enable_lsp_tasks": true,
       "initialization_options": {
         "cargo": {
           "extraEnv": {
-            "RUSTUP_AUTO_INSTALL": "1",
-            "RUST_BACKTRACE": "full",
+            // "RUST_BACKTRACE": "full",
             "RUSTC_WRAPPER": "sccache",
-            "SCCACHE_CACHE_SIZE": "10G",
           },
-          "features": "all",
           "allTargets": false,
         },
         "rust": {
@@ -457,32 +454,50 @@
           },
           "snippets": {
             "custom": {
+              "Ok": {
+                "postfix": "ok",
+                "body": ["Ok(${receiver})"],
+                "description": "Wrap the expression in a `Result::Ok`",
+                "scope": "expr",
+              },
+              "Box::pin": {
+                "postfix": "pinbox",
+                "body": ["Box::pin(${receiver})"],
+                "requires": "std::boxed::Box",
+                "description": "Put the expression into a pinned `Box`",
+                "scope": "expr",
+              },
               "Arc::new": {
                 "postfix": "arc",
                 "body": ["Arc::new(${receiver})"],
                 "requires": "std::sync::Arc",
+                "description": "Put the expression into an `Arc`",
                 "scope": "expr",
               },
               "Some": {
                 "postfix": "some",
                 "body": ["Some(${receiver})"],
+                "description": "Wrap the expression in an `Option::Some`",
                 "scope": "expr",
               },
-              "Ok": {
-                "postfix": "ok",
-                "body": ["Ok(${receiver})"],
+              "Err": {
+                "postfix": "err",
+                "body": ["Err(${receiver})"],
+                "description": "Wrap the expression in a `Result::Err`",
                 "scope": "expr",
               },
               "Rc::new": {
                 "postfix": "rc",
                 "body": ["Rc::new(${receiver})"],
                 "requires": "std::rc::Rc",
+                "description": "Put the expression into an `Rc`",
                 "scope": "expr",
               },
-              "Box::pin": {
+              "Box::pin (boxpin)": {
                 "postfix": "boxpin",
                 "body": ["Box::pin(${receiver})"],
                 "requires": "std::boxed::Box",
+                "description": "Put the expression into a pinned `Box`",
                 "scope": "expr",
               },
               "vec!": {
@@ -586,8 +601,7 @@
         "check": {
           "command": "clippy",
           "workspace": false,
-          "allTargets": true,
-          // "features": "all",
+          "allTargets": false,
           "extraArgs": [
             "--",
             "-W",
@@ -849,12 +863,12 @@
       },
       "formatter": [
         {
+          "code_action": "source.organizeImports",
+        },
+        {
           "language_server": {
             "name": "rust-analyzer",
           },
-        },
-        {
-          "code_action": "source.organizeImports",
         },
       ],
       "format_on_save": "modifications_if_available",
