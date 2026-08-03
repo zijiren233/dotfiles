@@ -1,102 +1,110 @@
-local is_ok, configs = pcall(require, "nvim-treesitter.configs")
-if not is_ok then
-	return
-end
+local treesitter = require("nvim-treesitter")
 
-configs.setup({
-	-- A list of parser names, or "all" (the four listed parsers should always be installed)
-	ensure_installed = {
-		"c",
-		"cpp",
-		"lua",
-		"bash",
-		"vim",
-		"regex",
-		"yaml",
-		"toml",
-		"rust",
-		"python",
-		"make",
-		"json",
-		"dockerfile",
-		"gitignore",
-		"gomod",
-		"go",
-		"gotmpl",
-		"nginx",
-		"sql",
-		"diff",
-		"markdown",
-		"markdown_inline",
-	},
-	-- Install parsers synchronously (only applied to `ensure_installed`)
-	sync_install = false,
-	-- Automatically install missing parsers when entering the buffer
-	-- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
-	auto_install = true,
-	-- List of parsers to ignore installing (for "all")
-	ignore_install = { "javascript" },
-	-- If you need to change the installation directory of the parsers (see -> Advanced Setup)
-	-- parser_install_dir = "/some/path/to/store/parsers",
-	-- Remember to run vim.opt.runtimepath:append("/some/path/to/store/parsers")!
+local ensure_installed = {
+	"c",
+	"cpp",
+	"lua",
+	"bash",
+	"vim",
+	"regex",
+	"yaml",
+	"toml",
+	"rust",
+	"python",
+	"make",
+	"json",
+	"dockerfile",
+	"gitignore",
+	"gomod",
+	"go",
+	"gotmpl",
+	"nginx",
+	"sql",
+	"diff",
+	"markdown",
+	"markdown_inline",
+}
 
-	highlight = {
-		-- Should we enable this module for all supported languages?
-		enable = true,
-
-		-- NOTE: these are the names of the parsers and not the filetype. (for example, if you want to
-		-- disable highlighting for the `tex` filetype, you need to include `latex` in this list as this is
-		-- the name of the parser)
-		-- If you want to disable the module for some languages you can pass a list to the `disable` option.
-		disable = { "c", "rust" },
-		-- Or use a function for more flexibility, e.g. to disable slow tree-sitter highlight for large files
-		-- disable = function(lang, buf)
-		--     local max_filesize = 100 * 1024 -- 100 KB
-		--     local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
-		--     if ok and stats and stats.size > max_filesize then
-		--         return true
-		--     end
-		-- end,
-
-		-- Setting this to true will run `:h syntax` and tree-sitter at the same time.
-		-- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
-		-- Using this option may slow down your editor, and you may see some duplicate highlights.
-		-- Instead of true it can also be a list of languages
-		additional_vim_regex_highlighting = false,
-	},
-	-- Indentation based on treesitter for the = operator. NOTE: This is an experimental feature.
-	indent = {
-		enable = true
-	},
-	incremental_selection = {
-		enable = true,
-		-- init_selection: in normal mode, start incremental selection.
-		-- node_incremental: in visual mode, increment to the upper named parent.
-		-- scope_incremental: in visual mode, increment to the upper scope
-		-- node_decremental: in visual mode, decrement to the previous named node.
-		keymaps = {
-			init_selection = "gss",
-			node_incremental = "gsi",
-			scope_incremental = "gsc",
-			node_decremental = "gsd",
-		},
-	},
+treesitter.setup({
+	install_dir = vim.fn.stdpath("data") .. "/site",
 })
 
--- Hints:
---   A uppercase letter followed `z` means recursive
---   zo: open one fold under the cursor
---   zc: close one fold under the cursor
---   za: toggle the folding
---   zv: open just enough folds to make the line in which the cursor is located not folded
---   zM: close all foldings
---   zR: open all foldings
--- source: https://github.com/nvim-treesitter/nvim-treesitter/wiki/Installation
-vim.api.nvim_create_autocmd({ "BufEnter", "BufAdd", "BufNew", "BufNewFile", "BufWinEnter" }, {
-	group = vim.api.nvim_create_augroup("TS_FOLD_WORKAROUND", {}),
-	callback = function()
+-- Parsers and queries are installed asynchronously and are skipped when current.
+treesitter.install(ensure_installed)
+
+local parser_filetypes = {
+	bash = true,
+	sh = true,
+	c = true,
+	cpp = true,
+	lua = true,
+	vim = true,
+	regex = true,
+	yaml = true,
+	toml = true,
+	rust = true,
+	python = true,
+	py = true,
+	make = true,
+	automake = true,
+	json = true,
+	jsonc = true,
+	dockerfile = true,
+	gitignore = true,
+	gitconfig = true,
+	gomod = true,
+	go = true,
+	gotmpl = true,
+	nginx = true,
+	sql = true,
+	diff = true,
+	gitdiff = true,
+	markdown = true,
+	pandoc = true,
+}
+
+local highlight_disabled = {
+	c = true,
+	rust = true,
+}
+
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "*",
+	group = vim.api.nvim_create_augroup("zjr_treesitter", { clear = true }),
+	callback = function(args)
+		local filetype = vim.bo[args.buf].filetype
+		if not parser_filetypes[filetype] then
+			return
+		end
+
+		local parser_ok = pcall(vim.treesitter.get_parser, args.buf)
+		if not parser_ok then
+			return
+		end
+		if not highlight_disabled[filetype] then
+			local highlighter = vim.treesitter.highlighter
+			if not highlighter.active[args.buf] and not pcall(vim.treesitter.start, args.buf) then
+				return
+			end
+		end
+
 		vim.wo.foldmethod = "expr"
 		vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 		vim.wo.foldenable = false
+		vim.bo[args.buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
 	end,
 })
+
+-- Neovim 0.12 provides incremental selection as a core Tree-sitter feature.
+vim.keymap.set("n", "gss", function()
+	vim.treesitter.select("parent")
+end, { desc = "Tree-sitter select parent" })
+vim.keymap.set("x", "gsi", function()
+	vim.treesitter.select("parent")
+end, { desc = "Tree-sitter select parent" })
+vim.keymap.set("x", "gsc", function()
+	vim.treesitter.select("parent")
+end, { desc = "Tree-sitter select scope" })
+vim.keymap.set("x", "gsd", function()
+	vim.treesitter.select("child")
+end, { desc = "Tree-sitter select child" })
