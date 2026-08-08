@@ -607,6 +607,8 @@
             "-W",
             "clippy::pedantic",
             "-A",
+            "clippy::assert_is_empty",
+            "-A",
             "clippy::needless_for_each",
             "-A",
             "clippy::doc_markdown",
